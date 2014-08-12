@@ -1,0 +1,12 @@
+
+
+In general, you can't; you have to write the whole file again (at least from the point of change to the end).
+
+In some specific cases you can do better than this -
+
+if all your data elements are the same length and in no specific order, and you know the offset of the one you want to get rid of, you could copy the last item over the one to be deleted and truncate the file before the last item;
+
+or you could just overwrite the data chunk with a 'this is bad data, skip it' value or keep a 'this item has been deleted' flag in your saved data elements such that you can mark it deleted without otherwise modifying the file.
+
+This is probably overkill for short documents (anything under 100 KB?).
+
